@@ -1,0 +1,53 @@
+{
+   "name": "backend",
+   "version": "1.0.0",
+   "description": "Backend for Gila Software",
+   "main": "dist/index.js",
+   "scripts": {
+      "build": "rm -rf dist && tsc -p tsconfig.json",
+      "start": "node dist/index.js",
+      "dev": "npm run build && nodemon src/index.ts",
+      "typeorm": "typeorm-ts-node-commonjs",
+      "migration:create": "npm run typeorm migration:create src/database/migrations/${npm_config_name}",
+      "migration:show": "npm run build && npm run typeorm migration:show -- --dataSource dist/database/DataSource.js",
+      "migration:up": "npm run build && npm run typeorm migration:run -- --dataSource dist/database/DataSource.js",
+      "migration:down": "npm run build && npm run typeorm migration:revert -- --dataSource dist/database/DataSource.js",
+      "test": "jest --coverage --verbose --runInBand --detectOpenHandles"
+   },
+   "author": "Lenin Ortiz",
+   "devDependencies": {
+      "@faker-js/faker": "^8.4.1",
+      "@types/express": "^4.17.21",
+      "@types/jest": "^29.5.12",
+      "@types/node": "^16.11.10",
+      "@types/supertest": "^6.0.2",
+      "concurrently": "^8.2.2",
+      "jest": "^29.7.0",
+      "nodemon": "^3.1.0",
+      "supertest": "^6.3.4",
+      "ts-jest": "^29.1.2",
+      "ts-node": "10.9.1",
+      "typescript": "4.5.2"
+   },
+   "dependencies": {
+      "decko": "^1.2.0",
+      "dotenv": "^16.4.5",
+      "express": "^4.19.2",
+      "express-validator": "^7.0.1",
+      "module-alias": "^2.2.3",
+      "pg": "^8.4.0",
+      "reflect-metadata": "^0.1.13",
+      "typeorm": "0.3.20",
+      "uuid": "^9.0.1"
+   },
+   "_moduleAliases": {
+      "@DataSource": "dist/database/DataSource.js",
+      "@Repository": "dist/database/repositories",
+      "@Model": "dist/database/models",
+      "@Server": "dist/api/server.js",
+      "@MainRouter": "dist/api/routes/index.js",
+      "@Route": "dist/api/routes",
+      "@Interface": "dist/interfaces",
+      "@Controller": "dist/api/controllers"
+   }
+}

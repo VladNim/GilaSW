@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"baseUrl": ".",
+		"paths": {
+			"@DataSource": ["database/DataSource.ts"],
+			"@Repository/*": ["database/repositories/*"],
+			"@Model/*": ["database/models/*"],
+			"@Server": ["api/server.ts"],
+			"@MainRouter": ["api/routes/index.ts"],
+			"@Route/*": ["api/routes/*"],
+			"@Interface/*": ["interfaces/*"],
+			"@Controller/*": ["api/controllers/*"]
+		}
+	}
+}

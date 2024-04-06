@@ -1,0 +1,36 @@
+services:
+  postgres:
+    extends:
+      file: compose-postgresql.yaml
+      service: postgres
+  postgres_test:
+    extends:
+      file: compose-postgresql-test.yaml
+      service: postgres_test
+  backend:
+    build:
+      args:
+        - NODE_ENV=development
+      context: backend
+      target: development
+    env_file:
+      - ./backend/.env
+    environment:
+      PGHOST: postgres
+    ports:
+      - 3000:3000
+    links:
+      - postgres
+    networks:
+      - public
+    depends_on:
+      postgres:
+        condition: service_healthy
+        restart: true
+
+volumes:
+  db-data:
+  db-data-test:
+
+networks:
+  public:
