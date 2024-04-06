@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { UserDTO } from "@DTO/UserDto";
+import { UserDTO } from "@DTO/UserDTO";
 import { IUser } from "@Interface/IUser";
 
 @Entity("user")

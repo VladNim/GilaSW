@@ -1,6 +1,7 @@
 import { isEmail, isEmpty, isMobilePhone, isUUID } from "class-validator";
+import { IUser } from "@Interface/IUser";
 
-export class UserDTO {
+export class UserDTO implements IUser {
 	public id?: string;
 	public name: string;
 	public email: string;
