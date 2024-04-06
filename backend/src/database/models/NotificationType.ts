@@ -1,14 +1,12 @@
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
-import { validate } from "uuid";
+import { INotificationType } from "@Interface/INotificationType";
+import { NotificationTypeDTO } from "@DTO/NotificationTypeDTO";
 
 @Entity("notification_type")
-export class NotificationType {
-    constructor(type: string, id?: string) {
-        if (id && validate(id)) {
-            this.id = id;
-        }
-
-        this.type = type;
+export class NotificationType implements INotificationType {
+    constructor(notificationTypeDto?: NotificationTypeDTO) {
+        this.id = notificationTypeDto?.id;
+        this.type = notificationTypeDto?.type;
     }
 
     @PrimaryGeneratedColumn("uuid")

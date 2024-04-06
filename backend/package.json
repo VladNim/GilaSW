@@ -9,9 +9,6 @@
       "dev": "npm run build && nodemon src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:create": "npm run typeorm migration:create src/database/migrations/${npm_config_name}",
-      "migration:show": "npm run build && npm run typeorm migration:show -- --dataSource dist/database/DataSource.js",
-      "migration:up": "npm run build && npm run typeorm migration:run -- --dataSource dist/database/DataSource.js",
-      "migration:down": "npm run build && npm run typeorm migration:revert -- --dataSource dist/database/DataSource.js",
       "test": "jest --coverage --verbose --runInBand --detectOpenHandles"
    },
    "author": "Lenin Ortiz",
@@ -30,6 +27,7 @@
       "typescript": "4.5.2"
    },
    "dependencies": {
+      "class-validator": "^0.14.1",
       "decko": "^1.2.0",
       "dotenv": "^16.4.5",
       "express": "^4.19.2",
@@ -49,6 +47,7 @@
       "@Route": "dist/api/routes",
       "@Interface": "dist/interfaces",
       "@Controller": "dist/api/controllers",
-      "@Service": "dist/api/services"
+      "@Service": "dist/api/services",
+      "@DTO": "dist/api/dto"
    }
 }

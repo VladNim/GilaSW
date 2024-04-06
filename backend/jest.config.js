@@ -27,6 +27,7 @@ module.exports = {
     "@Interface/(.*)": "<rootDir>/src/interfaces/$1",
     "@Controller/(.*)": "<rootDir>/src/api/controllers/$1",
     "@Service/(.*)": "<rootDir>/src/api/services/$1",
+    "@DTO/(.*)": "<rootDir>/src/api/dto/$1",
   }
 };
 

@@ -10,7 +10,8 @@
 			"@Route/*": ["api/routes/*"],
 			"@Interface/*": ["interfaces/*"],
 			"@Controller/*": ["api/controllers/*"],
-			"@Service/*": ["api/services/*"]
+			"@Service/*": ["api/services/*"],
+			"@DTO/*": ["api/dto/*"]
 		}
 	}
 }

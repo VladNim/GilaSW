@@ -75,6 +75,30 @@ npm install
 npm run dev
 ```
 
+### Migrations
+
+You can create new migration files using the next command:
+
+```
+npm run migration:create
+```
+
+This will cretae a new file under the `<root>/src/database/migrations` directory.
+
+The migrations up are autmatically executed by the ORM, you don't need to run them manually, you just need to re-run your environment re building your Docker container:
+```
+docker build
+docker compose up -d
+```
+
+or restarting you npm run process:
+```
+<cdm + c>
+npm run dev
+```
+
+### TODO: documentation about ERD and to include diagrams
+
 ### Unit Tests
 
 If you didn't install the project using the **Dockerized installation** you would need to create the Testing Database manually by yourself or using the `compose-postgresql-test.yaml`:
