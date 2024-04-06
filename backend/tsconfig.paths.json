@@ -9,7 +9,8 @@
 			"@MainRouter": ["api/routes/index.ts"],
 			"@Route/*": ["api/routes/*"],
 			"@Interface/*": ["interfaces/*"],
-			"@Controller/*": ["api/controllers/*"]
+			"@Controller/*": ["api/controllers/*"],
+			"@Service/*": ["api/services/*"]
 		}
 	}
 }

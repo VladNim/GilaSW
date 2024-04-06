@@ -48,6 +48,7 @@
       "@MainRouter": "dist/api/routes/index.js",
       "@Route": "dist/api/routes",
       "@Interface": "dist/interfaces",
-      "@Controller": "dist/api/controllers"
+      "@Controller": "dist/api/controllers",
+      "@Service": "dist/api/services"
    }
 }
