@@ -27,23 +27,23 @@ afterEach(() => {
 
 describe("User Table Migrations", () => {
 	// Migrations up
-	it ("Should create the table user", async () => {
+	it ("Should create the table gs_user", async () => {
 		const migration: CreateUserTable1712427068673 = new CreateUserTable1712427068673();
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("user");
+		const tableExists = await queryRunner.hasTable("gs_user");
 
 		expect(tableExists).toBe(true);
 	});
 
 	// Migrations down
-	it ("Should drop the table user", async () => {
+	it ("Should drop the table gs_user", async () => {
 		const migration: CreateUserTable1712427068673 = new CreateUserTable1712427068673();
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("user");
+		const tableExists = await queryRunner.hasTable("gs_user");
 
 		expect(tableExists).toBe(false);
 	});

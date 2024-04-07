@@ -43,8 +43,8 @@ export class SharedDataSource {
 				await this._instance.initialize();
 
 				if (mustMockUsers) {
-					const existingUsers = await this._instance.query("SELECT COUNT (*) FROM user");
-					if (!existingUsers) await runSeeders(this._instance);
+					const existingUsers = await this._instance.manager.query("SELECT * FROM gs_user LIMIT 1");
+					if (existingUsers && existingUsers.length === 0) await runSeeders(this._instance);
 				}
 			}
 		} catch (error) {

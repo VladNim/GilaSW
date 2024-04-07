@@ -34,5 +34,6 @@ module.exports = {
 
 process.env = Object.assign(process.env, {
   POSTGRES_DB: "giladb_test",
-  POSTGRES_DB_PORT: 5433
+  POSTGRES_DB_PORT: 5433,
+  MOCK_USERS: "false"
 });

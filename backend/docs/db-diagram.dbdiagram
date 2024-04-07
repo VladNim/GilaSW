@@ -11,7 +11,7 @@ Table notification_type {
   type varchar [not null]
 }
 
-Table user {
+Table gs_user {
   id uuid [primary key]
   name varchar [not null]
   email varchar [not null]

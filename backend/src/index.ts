@@ -27,7 +27,7 @@ async function main() {
 			console.log("Server closed");
 		});
 	} catch(error) {
-		console.log("Error trying to start the server", { error });
+		console.error("Error trying to start the server", { error });
 	}
 }
 

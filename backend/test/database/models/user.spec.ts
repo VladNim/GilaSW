@@ -10,8 +10,10 @@ import { PHONE_REGEX } from "../../../src/utils/constants/DBConstants";
 beforeAll(async() => {
 	const dataSource: DataSourceOptions = {
 		...BASE_TEST_DATA_SOURCE,
-		migrationsRun: false
+		migrationsRun: true
 	};
+
+	process.env.MOCK_USERS = "true";
 
 	await SharedDataSource.initialize(dataSource);
 });

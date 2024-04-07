@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 import { UserDTO } from "@DTO/UserDTO";
 import { IUser } from "@Interface/IUser";
 
-@Entity("user")
+@Entity("gs_user")
 export class User implements IUser {
     constructor(userDto?: UserDTO) {
 		this.id = userDto?.id;
