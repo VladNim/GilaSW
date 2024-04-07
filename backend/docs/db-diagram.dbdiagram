@@ -18,12 +18,12 @@ Table gs_user {
   mobile varchar [not null]
 }
 
-Table user_message_category_map {
-  user_id uuid [ref: > user.id]
+Table gs_user_message_category_map {
+  gs_user_id uuid [ref: > gs_user.id]
   message_category_id uuid [ref: > message_category.id]
 }
 
-Table user_nootification_type_map {
-  user_id uuid [ref: > user.id]
+Table gs_user_nootification_type_map {
+  gs_user_id uuid [ref: > gs_user.id]
   notification_type_id uuid [ref: > notification_type.id]
 }
