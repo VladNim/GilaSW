@@ -36,6 +36,7 @@
       "pg": "^8.4.0",
       "reflect-metadata": "^0.1.13",
       "typeorm": "0.3.20",
+      "typeorm-extension": "^3.5.0",
       "uuid": "^9.0.1"
    },
    "_moduleAliases": {
@@ -48,6 +49,7 @@
       "@Interface": "dist/interfaces",
       "@Controller": "dist/api/controllers",
       "@Service": "dist/api/services",
-      "@DTO": "dist/api/dto"
+      "@DTO": "dist/api/dto",
+      "@Constants": "dist/utils/constants"
    }
 }

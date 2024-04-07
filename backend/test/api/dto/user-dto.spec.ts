@@ -1,14 +1,14 @@
 import { faker } from "@faker-js/faker";
 import { randomUUID } from "crypto";
 import { UserDTO } from "../../../src/api/dto/UserDTO";
-import { PHONE_REGEX } from "../../constants";
+import { PHONE_REGEX } from "../../../src/utils/constants/DBConstants";
 
 describe("User DTO", () => {
 	it ("Should create an object instance", () => {
 		const instanceDto: UserDTO = new UserDTO(
 			faker.person.fullName(),
 			faker.internet.email(),
-			faker.helpers.fromRegExp(PHONE_REGEX),
+			faker.helpers.fromRegExp(PHONE_REGEX.STRING),
 			randomUUID()
 		);
 
@@ -28,7 +28,7 @@ describe("User DTO", () => {
 			new UserDTO(
 				faker.person.fullName(),
 				faker.internet.email(),
-				faker.helpers.fromRegExp(PHONE_REGEX),
+				faker.helpers.fromRegExp(PHONE_REGEX.STRING),
 				faker.color.human()
 			);
 		};
@@ -36,7 +36,7 @@ describe("User DTO", () => {
 			new UserDTO(
 				"",
 				faker.internet.email(),
-				faker.helpers.fromRegExp(PHONE_REGEX),
+				faker.helpers.fromRegExp(PHONE_REGEX.STRING),
 				uuid
 			);
 		};
@@ -44,7 +44,7 @@ describe("User DTO", () => {
 			new UserDTO(
 				undefined,
 				faker.internet.email(),
-				faker.helpers.fromRegExp(PHONE_REGEX),
+				faker.helpers.fromRegExp(PHONE_REGEX.STRING),
 				uuid
 			);
 		};
@@ -52,7 +52,7 @@ describe("User DTO", () => {
 			new UserDTO(
 				faker.person.fullName(),
 				faker.lorem.sentence(),
-				faker.helpers.fromRegExp(PHONE_REGEX),
+				faker.helpers.fromRegExp(PHONE_REGEX.STRING),
 				uuid
 			);
 		};

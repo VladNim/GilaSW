@@ -97,7 +97,18 @@ or restarting you npm run process:
 npm run dev
 ```
 
-### TODO: documentation about ERD and to include diagrams
+### Factory and Seeder
+
+For creating fake users you can enable the ```MOCK_USERS```as true inside your .env file.
+This will create 20 User entities for your current environment.
+
+> This flag will be ignored if you already have any User created, this for avoiding to override or loose control over the "real" Users and the fake ones.
+
+```
+...
+MOCK_USERS=true
+...
+```
 
 ### Unit Tests
 
@@ -118,3 +129,8 @@ Remember to install the packages if you didn't yet before running the command ab
 ```
 npm install
 ```
+
+### Database Diagrams
+
+Under the directory `<root>/docs` you will find the file: `db-diagram.dbdiagram`.
+This file contains the design for the ERD and can be opened on [dbdiagram.io](https://dbdiagram.io/)

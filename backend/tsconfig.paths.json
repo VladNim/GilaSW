@@ -11,7 +11,8 @@
 			"@Interface/*": ["interfaces/*"],
 			"@Controller/*": ["api/controllers/*"],
 			"@Service/*": ["api/services/*"],
-			"@DTO/*": ["api/dto/*"]
+			"@DTO/*": ["api/dto/*"],
+			"@Constants/*": ["utils/constants/*"]
 		}
 	}
 }

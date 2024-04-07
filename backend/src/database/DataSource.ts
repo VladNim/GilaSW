@@ -1,9 +1,10 @@
 import { DataSource, DataSourceOptions } from "typeorm";
 import dotenv from "dotenv";
+import { SeederOptions, runSeeders } from "typeorm-extension";
 
 dotenv.config();
 
-const baseDataSourceOptions: DataSourceOptions = {
+const baseDataSourceOptions: DataSourceOptions & SeederOptions = {
 	type: "postgres",
 	host: process.env.PGHOST ?? process.env.POSTGRES_HOST,
 	port: Number(process.env.POSTGRES_DB_PORT),
@@ -14,6 +15,8 @@ const baseDataSourceOptions: DataSourceOptions = {
 	logging: true,
 	entities: [`${__dirname}/models/**/*.*`],
 	migrations: [`${__dirname}/migrations/**/*.*`],
+	factories: [`${__dirname}/factories/**/*.{js,ts}`],
+	seeds: [`${__dirname}/seeders/**/*.{js,ts}`],
 	subscribers: [],
 	migrationsRun: true,
 	logNotifications: false
@@ -26,6 +29,8 @@ export class SharedDataSource {
 
 	public static async initialize(dataSourceConfig?: DataSourceOptions): Promise<void> {
 		try {
+			const mustMockUsers = process.env.MOCK_USERS === "true";
+
 			if (!SharedDataSource._instance || !SharedDataSource._instance.isInitialized) {
 				if (dataSourceConfig) {
 					Object.keys(dataSourceConfig).forEach(key => {
@@ -36,6 +41,11 @@ export class SharedDataSource {
 				this._instance = new DataSource(baseDataSourceOptions);
 
 				await this._instance.initialize();
+
+				if (mustMockUsers) {
+					const existingUsers = await this._instance.query("SELECT COUNT (*) FROM user");
+					if (!existingUsers) await runSeeders(this._instance);
+				}
 			}
 		} catch (error) {
 			console.error("Error trying to open db connection: ", { message: error.message, error });

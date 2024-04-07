@@ -12,6 +12,8 @@ beforeAll(async() => {
 		migrationsRun: false
 	};
 
+	process.env.MOCK_USERS = "true";
+
 	await SharedDataSource.initialize(dataSource);
 	server = new Server();
 });

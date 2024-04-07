@@ -1,0 +1,29 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table message_category {
+  id uuid [primary key]
+  name varchar [not null]
+}
+
+Table notification_type {
+  id uuid [primary key]
+  type varchar [not null]
+}
+
+Table user {
+  id uuid [primary key]
+  name varchar [not null]
+  email varchar [not null]
+  mobile varchar [not null]
+}
+
+Table user_message_category_map {
+  user_id uuid [ref: > user.id]
+  message_category_id uuid [ref: > message_category.id]
+}
+
+Table user_nootification_type_map {
+  user_id uuid [ref: > user.id]
+  notification_type_id uuid [ref: > notification_type.id]
+}
