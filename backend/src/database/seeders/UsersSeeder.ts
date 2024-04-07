@@ -3,9 +3,9 @@ import { Seeder, SeederFactoryManager } from "typeorm-extension";
 import { User } from "@Model/User";
 
 export class UsersSeeder implements Seeder {
-	public async run(dataSource: DataSource, factoryManager: SeederFactoryManager): Promise<any> {
+	public async run(_: DataSource, factoryManager: SeederFactoryManager): Promise<User[]> {
 		const usersFactory = factoryManager.get(User);
 
-		const users = await usersFactory.saveMany(20);
+		return await usersFactory.saveMany(20);
 	}
 }

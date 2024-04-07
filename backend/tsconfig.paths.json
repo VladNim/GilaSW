@@ -12,7 +12,9 @@
 			"@Controller/*": ["api/controllers/*"],
 			"@Service/*": ["api/services/*"],
 			"@DTO/*": ["api/dto/*"],
-			"@Constants/*": ["utils/constants/*"]
+			"@Constants/*": ["utils/constants/*"],
+			"@Factory/*": ["database/factories/*"],
+			"@Seeder/*": ["database/seeders/*"]
 		}
 	}
 }

@@ -10,7 +10,7 @@
       "dev": "npm run build && nodemon src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:create": "npm run typeorm migration:create src/database/migrations/${npm_config_name}",
-      "test": "jest --coverage --verbose --runInBand --detectOpenHandles",
+      "test": "npm run build && jest --coverage --verbose --runInBand --detectOpenHandles",
       "docker:rebuild": "cd .. && docker compose build && docker compose up -d"
    },
    "author": "Lenin Ortiz",
@@ -52,6 +52,8 @@
       "@Controller": "dist/api/controllers",
       "@Service": "dist/api/services",
       "@DTO": "dist/api/dto",
-      "@Constants": "dist/utils/constants"
+      "@Constants": "dist/utils/constants",
+      "@Factory": "dist/database/factories",
+      "@Seeder": "dist/database/seeders"
    }
 }
