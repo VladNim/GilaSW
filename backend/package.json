@@ -4,12 +4,14 @@
    "description": "Backend for Gila Software",
    "main": "dist/index.js",
    "scripts": {
+      "clean": "rm -rf dist node_modules coverage",
       "build": "rm -rf dist && tsc -p tsconfig.json",
       "start": "node dist/index.js",
       "dev": "npm run build && nodemon src/index.ts",
       "typeorm": "typeorm-ts-node-commonjs",
       "migration:create": "npm run typeorm migration:create src/database/migrations/${npm_config_name}",
-      "test": "jest --coverage --verbose --runInBand --detectOpenHandles"
+      "test": "jest --coverage --verbose --runInBand --detectOpenHandles",
+      "docker:rebuild": "cd .. && docker compose build && docker compose up -d"
    },
    "author": "Lenin Ortiz",
    "devDependencies": {

@@ -19,6 +19,7 @@ beforeAll(async() => {
 });
 
 afterAll(async() => {
+	await SharedDataSource.instance.dropDatabase();
 	await SharedDataSource.instance.destroy();
 });
 
