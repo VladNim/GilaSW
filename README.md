@@ -80,7 +80,7 @@ npm run dev
 You can create new migration files using the next command:
 
 ```
-npm run migration:create
+npm run migration:create --name=<MIGRATION NAME>
 ```
 
 This will cretae a new file under the `<root>/src/database/migrations` directory.
