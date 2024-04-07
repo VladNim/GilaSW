@@ -9,12 +9,14 @@ export class CreateUserNotificationTypeMapTable1712472531349 implements Migratio
             columns: [
                 {
                     name: "user_id",
-                    type: "uuid"
+                    type: "uuid",
+                    isPrimary: true
                 },
                 {
                     name: "notification_type_id",
                     type: "uuid",
-                },
+                    isPrimary: true
+                }
             ]
         });
 

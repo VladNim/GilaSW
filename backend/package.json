@@ -54,6 +54,7 @@
       "@DTO": "dist/api/dto",
       "@Constants": "dist/utils/constants",
       "@Factory": "dist/database/factories",
-      "@Seeder": "dist/database/seeders"
+      "@Seeder": "dist/database/seeders",
+      "@MathUtils": "dist/utils/MathUtils.js"
    }
 }

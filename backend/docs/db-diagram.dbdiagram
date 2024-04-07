@@ -19,11 +19,11 @@ Table gs_user {
 }
 
 Table gs_user_message_category_map {
-  gs_user_id uuid [ref: > gs_user.id]
-  message_category_id uuid [ref: > message_category.id]
+  gs_user_id uuid [ref: > gs_user.id, primary key]
+  message_category_id uuid [ref: > message_category.id, primary key]
 }
 
 Table gs_user_nootification_type_map {
-  gs_user_id uuid [ref: > gs_user.id]
-  notification_type_id uuid [ref: > notification_type.id]
+  gs_user_id uuid [ref: > gs_user.id, primary key]
+  notification_type_id uuid [ref: > notification_type.id, primary key]
 }

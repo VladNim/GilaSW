@@ -14,7 +14,8 @@
 			"@DTO/*": ["api/dto/*"],
 			"@Constants/*": ["utils/constants/*"],
 			"@Factory/*": ["database/factories/*"],
-			"@Seeder/*": ["database/seeders/*"]
+			"@Seeder/*": ["database/seeders/*"],
+			"@MathUtils": ["utils/MathUtils.ts"],
 		}
 	}
 }

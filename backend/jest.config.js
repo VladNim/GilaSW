@@ -30,7 +30,8 @@ module.exports = {
     "@DTO/(.*)": "<rootDir>/src/api/dto/$1",
     "@Constants/(.*)": "<rootDir>/src/utils/constants/$1",
     "@Factory/(.*)": "<rootDir>/src/database/factories/$1",
-    "@Seeder/(.*)": "<rootDir>/src/database/seeders/$1"
+    "@Seeder/(.*)": "<rootDir>/src/database/seeders/$1",
+    "@MathUtils": "<rootDir>/src/utils/MathUtils.ts",
   }
 };
 

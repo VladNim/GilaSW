@@ -9,11 +9,13 @@ export class CreateUserMessageCategoryMapTable1712468642109 implements Migration
             columns: [
                 {
                     name: "user_id",
-                    type: "uuid"
+                    type: "uuid",
+                    isPrimary: true
                 },
                 {
                     name: "message_category_id",
                     type: "uuid",
+                    isPrimary: true
                 },
             ]
         });
