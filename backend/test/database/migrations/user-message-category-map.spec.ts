@@ -6,6 +6,7 @@ import { CreateMessageCategoryTable1712355692895 } from "../../../src/database/m
 
 import { CreateUserMessageCategoryMapTable1712468642109 } from "../../../src/database/migrations/1712468642109-CreateUserMessageCategoryMapTable";
 import { BASE_TEST_DATA_SOURCE } from "../../constants";
+import { TABLE_NAME } from "../../../src/utils/constants/DBConstants";
 
 let queryRunner: QueryRunner;
 
@@ -42,7 +43,7 @@ describe("User Message Category Map Table Migrations", () => {
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user_message_category_map");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER_MESSAGE_CATEGORY_MAP);
 		
 		expect(tableExists).toBe(true);
 	});
@@ -53,7 +54,7 @@ describe("User Message Category Map Table Migrations", () => {
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user_message_category_map");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER_MESSAGE_CATEGORY_MAP);
 
 		expect(tableExists).toBe(false);
 	});

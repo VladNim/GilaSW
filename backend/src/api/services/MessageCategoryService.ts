@@ -3,11 +3,11 @@ import { MessageCategoryRepository } from "@Repository/MessageCategoryRepository
 import { MessageCategory } from "@Model/MessageCategory";
 
 export class MessageCategoryService {
-	private readonly categoryRepo: MessageCategoryRepository = new MessageCategoryRepository();
+	private readonly repo: MessageCategoryRepository = new MessageCategoryRepository();
 
 	@bind
 	async findAll(): Promise<MessageCategory[]> {
-		const categories: MessageCategory[] = await this.categoryRepo.find({});
+		const categories: MessageCategory[] = await this.repo.find({});
 
 		return categories;
 	}

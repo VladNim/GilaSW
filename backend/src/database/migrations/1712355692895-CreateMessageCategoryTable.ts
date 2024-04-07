@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { TABLE_NAME } from "@Constants/DBConstants";
 
 export class CreateMessageCategoryTable1712355692895 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const table: Table = new Table({
-            name: "message_category",
+            name: TABLE_NAME.MESSAGE_CATEGORY,
             columns: [
                 {
                     name: "id",
@@ -24,7 +25,7 @@ export class CreateMessageCategoryTable1712355692895 implements MigrationInterfa
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("message_category");
+        await queryRunner.dropTable(TABLE_NAME.MESSAGE_CATEGORY);
     }
 
 }

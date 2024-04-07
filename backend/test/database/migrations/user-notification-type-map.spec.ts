@@ -6,6 +6,7 @@ import { CreateNotificationTypeTable1712361827102 } from "../../../src/database/
 
 import { CreateUserNotificationTypeMapTable1712472531349 } from "../../../src/database/migrations/1712472531349-CreateUserNotificationTypeMapTable";
 import { BASE_TEST_DATA_SOURCE } from "../../constants";
+import { TABLE_NAME } from "../../../src/utils/constants/DBConstants";
 
 let queryRunner: QueryRunner;
 
@@ -42,7 +43,7 @@ describe("User Message Category Map Table Migrations", () => {
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user_notification_type_map");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER_NOTIFICATION_TYPE_MAP);
 		
 		expect(tableExists).toBe(true);
 	});
@@ -53,7 +54,7 @@ describe("User Message Category Map Table Migrations", () => {
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user_notification_type_map");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER_NOTIFICATION_TYPE_MAP);
 
 		expect(tableExists).toBe(false);
 	});

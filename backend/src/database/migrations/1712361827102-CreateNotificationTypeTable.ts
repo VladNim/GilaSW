@@ -1,10 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
+import { TABLE_NAME } from "@Constants/DBConstants";
 
 export class CreateNotificationTypeTable1712361827102 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const table: Table = new Table({
-            name: "notification_type",
+            name: TABLE_NAME.NOTIFICATION_TYPE,
             columns: [
                 {
                     name: "id",
@@ -24,7 +25,7 @@ export class CreateNotificationTypeTable1712361827102 implements MigrationInterf
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("notification_type");
+        await queryRunner.dropTable(TABLE_NAME.NOTIFICATION_TYPE);
     }
 
 }

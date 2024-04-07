@@ -1,11 +1,12 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } from "typeorm";
+import { TABLE_NAME } from "@Constants/DBConstants";
 
 export class CreateUserNotificationTypeMapTable1712472531349 implements MigrationInterface {
     private readonly TABLE_NAME = "gs_user_notification_type_map";
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const table: Table = new Table({
-            name: this.TABLE_NAME,
+            name: TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             columns: [
                 {
                     name: "user_id",
@@ -23,7 +24,7 @@ export class CreateUserNotificationTypeMapTable1712472531349 implements Migratio
         await queryRunner.createTable(table, true);
 
         await queryRunner.createIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             new TableIndex({
                 name: "IDX_GS_USER_NOTIFICATION_TYPE_MAP_USER_ID",
                 columnNames: ["user_id"]
@@ -31,7 +32,7 @@ export class CreateUserNotificationTypeMapTable1712472531349 implements Migratio
         );
 
         await queryRunner.createIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             new TableIndex({
                 name: "IDX_GS_USER_NOTIFICATION_TYPE_MAP_NOTIFICATION_TYPE_ID",
                 columnNames: ["notification_type_id"]
@@ -39,22 +40,22 @@ export class CreateUserNotificationTypeMapTable1712472531349 implements Migratio
         );
 
         await queryRunner.createForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             new TableForeignKey({
                 columnNames: ["user_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "gs_user",
+                referencedTableName: TABLE_NAME.USER,
                 onDelete: "CASCADE",
                 name: "FK_GS_USER_NOTIFICATION_TYPE_MAP_USER_ID"
             })
         );
 
         await queryRunner.createForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             new TableForeignKey({
                 columnNames: ["notification_type_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "notification_type",
+                referencedTableName: TABLE_NAME.NOTIFICATION_TYPE,
                 onDelete: "CASCADE",
                 name: "FK_GS_USER_NOTIFICATION_TYPE_MAP_NOTIFICATION_TYPE_ID"
             })
@@ -63,26 +64,26 @@ export class CreateUserNotificationTypeMapTable1712472531349 implements Migratio
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             "FK_GS_USER_NOTIFICATION_TYPE_MAP_USER_ID"
         );
 
         await queryRunner.dropForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             "FK_GS_USER_NOTIFICATION_TYPE_MAP_NOTIFICATION_TYPE_ID"
         );
 
         await queryRunner.dropIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             "IDX_GS_USER_NOTIFICATION_TYPE_MAP_USER_ID"
         );
 
         await queryRunner.dropIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
             "IDX_GS_USER_NOTIFICATION_TYPE_MAP_NOTIFICATION_TYPE_ID"
         );
 
-        await queryRunner.dropTable(this.TABLE_NAME);
+        await queryRunner.dropTable(TABLE_NAME.USER_NOTIFICATION_TYPE_MAP);
     }
 
 }

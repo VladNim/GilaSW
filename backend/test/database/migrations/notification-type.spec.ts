@@ -4,6 +4,7 @@ import { NotificationType } from "../../../src/database/models/NotificationType"
 import { CreateNotificationTypeTable1712361827102 } from "../../../src/database/migrations/1712361827102-CreateNotificationTypeTable";
 import { InsertNotificationTypes1712362553571 } from "../../../src/database/migrations/1712362553571-InsertNotificationTypes";
 import { BASE_TEST_DATA_SOURCE } from "../../constants";
+import { TABLE_NAME } from "../../../src/utils/constants/DBConstants";
 
 let queryRunner: QueryRunner;
 
@@ -34,7 +35,7 @@ describe("Notification Type Table Migrations", () => {
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("notification_type");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.NOTIFICATION_TYPE);
 
 		expect(tableExists).toBe(true);
 	});
@@ -67,7 +68,7 @@ describe("Notification Type Table Migrations", () => {
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("notification_type");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.NOTIFICATION_TYPE);
 
 		expect(tableExists).toBe(false);
 	});

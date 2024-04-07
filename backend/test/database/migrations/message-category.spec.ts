@@ -4,6 +4,7 @@ import { MessageCategory } from "../../../src/database/models/MessageCategory";
 import { CreateMessageCategoryTable1712355692895 } from "../../../src/database/migrations/1712355692895-CreateMessageCategoryTable";
 import { InsertMessageCategories1712357125739 } from "../../../src/database/migrations/1712357125739-InsertMessageCategories";
 import { BASE_TEST_DATA_SOURCE } from "../../constants";
+import { TABLE_NAME } from "../../../src/utils/constants/DBConstants";
 
 let queryRunner: QueryRunner;
 
@@ -34,7 +35,7 @@ describe("Message Category Table Migrations", () => {
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("message_category");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.MESSAGE_CATEGORY);
 
 		expect(tableExists).toBe(true);
 	});
@@ -67,7 +68,7 @@ describe("Message Category Table Migrations", () => {
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("message_category");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.MESSAGE_CATEGORY);
 
 		expect(tableExists).toBe(false);
 	});

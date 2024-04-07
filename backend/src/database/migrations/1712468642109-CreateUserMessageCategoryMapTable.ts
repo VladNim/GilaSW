@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table, TableForeignKey, TableIndex } from "typeorm";
+import { TABLE_NAME } from "@Constants/DBConstants";
 
 export class CreateUserMessageCategoryMapTable1712468642109 implements MigrationInterface {
-    private readonly TABLE_NAME = "gs_user_message_category_map";
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         const table: Table = new Table({
-            name: this.TABLE_NAME,
+            name: TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             columns: [
                 {
                     name: "user_id",
@@ -23,7 +23,7 @@ export class CreateUserMessageCategoryMapTable1712468642109 implements Migration
         await queryRunner.createTable(table, true);
 
         await queryRunner.createIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             new TableIndex({
                 name: "IDX_GS_USER_MESSAGE_CATEGORY_MAP_USER_ID",
                 columnNames: ["user_id"]
@@ -31,7 +31,7 @@ export class CreateUserMessageCategoryMapTable1712468642109 implements Migration
         );
 
         await queryRunner.createIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             new TableIndex({
                 name: "IDX_GS_USER_MESSAGE_CATEGORY_MAP_MESSAGE_CATEGORY_ID",
                 columnNames: ["message_category_id"]
@@ -39,22 +39,22 @@ export class CreateUserMessageCategoryMapTable1712468642109 implements Migration
         );
 
         await queryRunner.createForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             new TableForeignKey({
                 columnNames: ["user_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "gs_user",
+                referencedTableName: TABLE_NAME.USER,
                 onDelete: "CASCADE",
                 name: "FK_GS_USER_MESSAGE_CATEGORY_MAP_USER_ID"
             })
         );
 
         await queryRunner.createForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             new TableForeignKey({
                 columnNames: ["message_category_id"],
                 referencedColumnNames: ["id"],
-                referencedTableName: "message_category",
+                referencedTableName: TABLE_NAME.MESSAGE_CATEGORY,
                 onDelete: "CASCADE",
                 name: "FK_GS_USER_MESSAGE_CATEGORY_MAP_MESSAGE_CATEGORY_ID"
             })
@@ -63,26 +63,26 @@ export class CreateUserMessageCategoryMapTable1712468642109 implements Migration
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             "FK_GS_USER_MESSAGE_CATEGORY_MAP_USER_ID"
         );
 
         await queryRunner.dropForeignKey(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             "FK_GS_USER_MESSAGE_CATEGORY_MAP_MESSAGE_CATEGORY_ID"
         );
 
         await queryRunner.dropIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             "IDX_GS_USER_MESSAGE_CATEGORY_MAP_USER_ID"
         );
 
         await queryRunner.dropIndex(
-            this.TABLE_NAME,
+            TABLE_NAME.USER_MESSAGE_CATEGORY_MAP,
             "IDX_GS_USER_MESSAGE_CATEGORY_MAP_MESSAGE_CATEGORY_ID"
         );
 
-        await queryRunner.dropTable(this.TABLE_NAME);
+        await queryRunner.dropTable(TABLE_NAME.USER_MESSAGE_CATEGORY_MAP);
     }
 
 }

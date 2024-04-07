@@ -2,6 +2,7 @@ import { DataSourceOptions, QueryRunner } from "typeorm";
 import { SharedDataSource } from "../../../src/database/DataSource";
 import { CreateUserTable1712427068673 } from "../../../src/database/migrations/1712427068673-CreateUserTable";
 import { BASE_TEST_DATA_SOURCE } from "../../constants";
+import { TABLE_NAME } from "../../../src/utils/constants/DBConstants";
 
 let queryRunner: QueryRunner;
 
@@ -32,7 +33,7 @@ describe("User Table Migrations", () => {
 
 		await migration.up(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER);
 
 		expect(tableExists).toBe(true);
 	});
@@ -43,7 +44,7 @@ describe("User Table Migrations", () => {
 
 		await migration.down(queryRunner);
 
-		const tableExists = await queryRunner.hasTable("gs_user");
+		const tableExists = await queryRunner.hasTable(TABLE_NAME.USER);
 
 		expect(tableExists).toBe(false);
 	});
