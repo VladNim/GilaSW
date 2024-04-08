@@ -32,6 +32,7 @@ module.exports = {
     "@Factory/(.*)": "<rootDir>/src/database/factories/$1",
     "@Seeder/(.*)": "<rootDir>/src/database/seeders/$1",
     "@MathUtils": "<rootDir>/src/utils/MathUtils.ts",
+    "@Adapters/Notification/(.*)": "<rootDir>/src/api/adapters/notifications/$1"
   }
 };
 

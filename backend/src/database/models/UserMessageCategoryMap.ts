@@ -1,6 +1,8 @@
 import { UserMessageCategoryMapDTO } from "@DTO/UserMessageCategoryDTO";
 import { IUserMessageCategoryMap } from "@Interface/IUserMessageCategoryMap";
-import { Entity, Column } from "typeorm";
+import { MessageCategory } from "@Model/MessageCategory";
+import { User } from "@Model/User";
+import { Entity, Column, OneToOne, JoinTable } from "typeorm";
 
 @Entity("gs_user_message_category_map")
 export class UserMessageCategoryMap implements IUserMessageCategoryMap {
@@ -22,5 +24,13 @@ export class UserMessageCategoryMap implements IUserMessageCategoryMap {
 		nullable: false
 	})
     public messageCategoryId: string;
+
+	@OneToOne(() => User)
+	@JoinTable()
+	user?: User;
+
+	@OneToOne(() => MessageCategory)
+	@JoinTable()
+	messageCategory?: MessageCategory;
 
 }

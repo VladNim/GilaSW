@@ -16,6 +16,7 @@
 			"@Factory/*": ["database/factories/*"],
 			"@Seeder/*": ["database/seeders/*"],
 			"@MathUtils": ["utils/MathUtils.ts"],
+			"@Adapters/Notification/*": ["api/adapters/notifications/*"],
 		}
 	}
 }
