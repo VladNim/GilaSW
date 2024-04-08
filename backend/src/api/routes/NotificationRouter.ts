@@ -12,5 +12,6 @@ export class NotificationRoutes implements IRoute<NotificationController> {
 
 	init(): void {
 		this.router.post("/:id/send", this.controller.send);
+		this.router.get("/logs", this.controller.logs);
 	}
 }

@@ -6,6 +6,7 @@ import { User } from "@Model/User";
 import { MessageCategoryRepository } from "@Repository/MessageCategoryRepository";
 import { NotificationLogRepository } from "@Repository/NotificationLogRepository";
 import { bind } from "decko";
+import { FindManyOptions } from "typeorm";
 
 export class NotificationService {
 	private readonly messageCategoryRepo: MessageCategoryRepository = new MessageCategoryRepository();
@@ -44,5 +45,37 @@ export class NotificationService {
 		});
 		
 		await this.notificationLogRepo.repo.save(newInstances);
+	}
+
+	@bind
+	public async getLogsWithData(): Promise<NotificationLog[]> {
+		const filter: FindManyOptions<NotificationLog> = {
+			order: {
+				createdAt: "desc"
+			},
+			relations: {
+				user: true,
+				messageCategory: true,
+				notificationType: true
+			},
+			select: {
+				userId: true,
+				messageCategoryId: true,
+				notificationTypeId: true,
+				createdAt: true,
+				payload: true,
+				user: {
+					name: true
+				},
+				messageCategory: {
+					name: true
+				},
+				notificationType: {
+					type: true
+				}
+			}
+		};
+
+		return await this.notificationLogRepo.find(filter);
 	}
 }

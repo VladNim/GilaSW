@@ -3,7 +3,7 @@ import { INotificationLog } from "@Interface/INotificationLog";
 import { MessageCategory } from "@Model/MessageCategory";
 import { NotificationType } from "@Model/NotificationType";
 import { User } from "@Model/User";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn, CreateDateColumn } from "typeorm";
 
 @Entity("notification_log")
 export class NotificationLog implements INotificationLog {
@@ -37,6 +37,12 @@ export class NotificationLog implements INotificationLog {
 
 	@Column()
     public payload: string;
+
+	
+	@CreateDateColumn({
+		name: "created_at"
+	})
+	public createdAt?: Date;
 
 	@ManyToOne(() => User, (user) => user.notificationLogs)
 	@JoinColumn([
