@@ -27,6 +27,19 @@ services:
       postgres:
         condition: service_healthy
         restart: true
+  frontend:
+    build:
+      context: frontend
+      target: development
+    volumes:
+      - /app/node_modules
+      - ./frontend:/app
+    ports:
+      - 4200:4200
+    depends_on:
+      - backend
+    networks:
+      - public
 
 volumes:
   db-data:
