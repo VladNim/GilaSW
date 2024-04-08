@@ -27,10 +27,10 @@ export class UserNotificationTypeMap implements IUserNotificationTypeMap {
 
 	@OneToOne(() => User)
 	@JoinTable()
-	user?: User;
+	public user?: User;
 
 	@OneToOne(() => NotificationType)
 	@JoinTable()
-	notificationType?: NotificationType;
+	public notificationType?: NotificationType;
 
 }

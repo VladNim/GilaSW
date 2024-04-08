@@ -1,9 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { UserDTO } from "@DTO/UserDTO";
 import { IUser } from "@Interface/IUser";
 import { TABLE_NAME } from "@Constants/DBConstants";
 import { MessageCategory } from "@Model/MessageCategory";
 import { NotificationType } from "@Model/NotificationType";
+import { NotificationLog } from "@Model/NotificationLog";
 
 @Entity("gs_user")
 export class User implements IUser {
@@ -38,7 +39,7 @@ export class User implements IUser {
             referencedColumnName: "id"
         }
     })
-    messageCategories: MessageCategory[];
+    public messageCategories?: MessageCategory[];
 
     @ManyToMany(() => NotificationType)
     @JoinTable({
@@ -52,6 +53,9 @@ export class User implements IUser {
             referencedColumnName: "id"
         }
     })
-    notificationTypes: NotificationType[];
+    public notificationTypes?: NotificationType[];
+
+    @OneToMany(() => NotificationLog, (notificationLog) => notificationLog.user)
+    public notificationLogs?: NotificationLog[];
 
 }

@@ -1,8 +1,9 @@
 import { TABLE_NAME } from "@Constants/DBConstants";
 import { MessageCategoryDTO } from "@DTO/MessageCategoryDTO";
 import { IMessageCategory } from "@Interface/IMessageCategory";
+import { NotificationLog } from "@Model/NotificationLog";
 import { User } from "@Model/User";
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from "typeorm";
 
 @Entity("message_category")
 export class MessageCategory implements IMessageCategory {
@@ -29,6 +30,9 @@ export class MessageCategory implements IMessageCategory {
             referencedColumnName: "id"
         }
     })
-    users: User[];
+    public users?: User[];
+
+    @OneToMany(() => NotificationLog, (notificationLog) => notificationLog.messageCategory)
+    public notificationLogs?: NotificationLog[];
 
 }

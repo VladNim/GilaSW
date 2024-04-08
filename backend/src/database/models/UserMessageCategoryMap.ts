@@ -27,10 +27,10 @@ export class UserMessageCategoryMap implements IUserMessageCategoryMap {
 
 	@OneToOne(() => User)
 	@JoinTable()
-	user?: User;
+	public user?: User;
 
 	@OneToOne(() => MessageCategory)
 	@JoinTable()
-	messageCategory?: MessageCategory;
+	public messageCategory?: MessageCategory;
 
 }

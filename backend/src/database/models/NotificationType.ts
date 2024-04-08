@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable, OneToMany } from "typeorm";
 import { INotificationType } from "@Interface/INotificationType";
 import { NotificationTypeDTO } from "@DTO/NotificationTypeDTO";
 import { User } from "@Model/User";
 import { TABLE_NAME } from "@Constants/DBConstants";
+import { NotificationLog } from "@Model/NotificationLog";
 
 @Entity("notification_type")
 export class NotificationType implements INotificationType {
@@ -29,6 +30,9 @@ export class NotificationType implements INotificationType {
             referencedColumnName: "id"
         }
     })
-    users: User[];
+    public users?: User[];
+
+    @OneToMany(() => NotificationLog, (notificationLog) => notificationLog.notificationType)
+    public notificationLogs?: NotificationLog[];
 
 }
