@@ -6,7 +6,7 @@ export class EMailNotification extends BaseNotification {
 		super(notificationType);
 	}
 
-	public send(): void {
-		console.log("Needs to send an EMAIL");
+	public sendPlainText(message: string): void {
+		console.log("Needs to send an EMAIL", { message });
 	}
 }

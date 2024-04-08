@@ -6,7 +6,7 @@ export class PushNotification extends BaseNotification {
 		super(notificationType);
 	}
 
-	public send(): void {
-		console.log("Needs to send a PUSH");
+	public sendPlainText(message: string): void {
+		console.log("Needs to send a PUSH", { message });
 	}
 }

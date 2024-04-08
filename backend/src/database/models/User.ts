@@ -3,6 +3,7 @@ import { UserDTO } from "@DTO/UserDTO";
 import { IUser } from "@Interface/IUser";
 import { TABLE_NAME } from "@Constants/DBConstants";
 import { MessageCategory } from "@Model/MessageCategory";
+import { NotificationType } from "@Model/NotificationType";
 
 @Entity("gs_user")
 export class User implements IUser {
@@ -38,5 +39,19 @@ export class User implements IUser {
         }
     })
     messageCategories: MessageCategory[];
+
+    @ManyToMany(() => NotificationType)
+    @JoinTable({
+        name: TABLE_NAME.USER_NOTIFICATION_TYPE_MAP,
+        joinColumn: {
+            name: "user_id",
+            referencedColumnName: "id"
+        },
+        inverseJoinColumn: {
+            name: "notification_type_id",
+            referencedColumnName: "id"
+        }
+    })
+    notificationTypes: NotificationType[];
 
 }

@@ -7,5 +7,5 @@ export abstract class BaseNotification {
 		this.notificationType = notificationType;
 	}
 
-	abstract send(): void;
+	abstract sendPlainText(message: string): void;
 }

@@ -1,6 +1,8 @@
 import { UserNotificationTypeMapDTO } from "@DTO/UserNotificationTypeDTO";
 import { IUserNotificationTypeMap } from "@Interface/IUserNotificationTypeMap";
-import { Entity, Column } from "typeorm";
+import { NotificationType } from "@Model/NotificationType";
+import { User } from "@Model/User";
+import { Entity, Column, OneToOne, JoinTable } from "typeorm";
 
 @Entity("gs_user_notification_type_map")
 export class UserNotificationTypeMap implements IUserNotificationTypeMap {
@@ -22,5 +24,13 @@ export class UserNotificationTypeMap implements IUserNotificationTypeMap {
 		nullable: false
 	})
     public notificationTypeId: string;
+
+	@OneToOne(() => User)
+	@JoinTable()
+	user?: User;
+
+	@OneToOne(() => NotificationType)
+	@JoinTable()
+	notificationType?: NotificationType;
 
 }

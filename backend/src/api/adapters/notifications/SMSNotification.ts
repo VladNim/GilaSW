@@ -6,7 +6,7 @@ export class SMSNotification extends BaseNotification {
 		super(notificationType);
 	}
 
-	public send(): void {
-		console.log("Needs to send an SMS");
+	public sendPlainText(message: string): void {
+		console.log("Needs to send an SMS", { message });
 	}
 }
