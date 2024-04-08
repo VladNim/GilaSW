@@ -1,3 +1,4 @@
+import { NotificationLog } from "@Model/NotificationLog";
 import { NotificationType } from "@Model/NotificationType";
 
 export abstract class BaseNotification {
@@ -7,5 +8,5 @@ export abstract class BaseNotification {
 		this.notificationType = notificationType;
 	}
 
-	abstract sendPlainText(message: string): void;
+	abstract sendPlainText(messageCategoryId: string, userId: string, message: string): Promise<NotificationLog>;
 }

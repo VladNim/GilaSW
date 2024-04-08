@@ -1,4 +1,6 @@
 import { BaseNotification } from "@Adapters/Notification/BaseNotification";
+import { NotificationLogDTO } from "@DTO/NotificationLogDTO";
+import { NotificationLog } from "@Model/NotificationLog";
 import { NotificationType } from "@Model/NotificationType";
 
 export class SMSNotification extends BaseNotification {
@@ -6,7 +8,21 @@ export class SMSNotification extends BaseNotification {
 		super(notificationType);
 	}
 
-	public sendPlainText(message: string): void {
+	public async sendPlainText(messageCategoryId: string, userId: string, message: string): Promise<NotificationLog> {
 		console.log("Needs to send an SMS", { message });
+
+		const data = {
+			message
+		};
+		
+		const notificationLogDto: NotificationLogDTO = new NotificationLogDTO(
+			userId,
+			messageCategoryId,
+			this.notificationType.id,
+			JSON.stringify(data)
+		);
+		const notificationLog: NotificationLog = new NotificationLog(notificationLogDto);
+
+		return notificationLog;
 	}
 }

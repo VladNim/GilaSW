@@ -17,13 +17,22 @@ export class NotificationLog implements INotificationLog {
     @PrimaryGeneratedColumn()
     public id?: number;
 
-    @Column()
+    @Column({
+		name: "user_id",
+		nullable: false
+	})
     public userId: string;
 
-	@Column()
+	@Column({
+		name: "message_category_id",
+		nullable: false
+	})
     public messageCategoryId: string;
 
-	@Column()
+	@Column({
+		name: "notification_type_id",
+		nullable: false
+	})
     public notificationTypeId: string;
 
 	@Column()
