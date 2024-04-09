@@ -48,6 +48,23 @@ POSTGRES_DB_PORT=5433
 ```
 > The `.env.test` file defines the database connectionns for Jest (Unit Tests)
 
+You will need also a `.env` file for your frontend application, this needs to be created at the `<root>/frontend` directory:
+```
+<root>/frontend/.env
+```
+```
+REACT_APP_API_URL=http://localhost:3000/api
+```
+> The `.env` file for the frontend is only required for running your project out of Docker with the command:
+```
+npm run start
+```
+> Remember to run this command inside the `<root>/frontend` directory after running the command:
+```
+npm install
+```
+> For working correctly the frontend application needs the backend application up and running.
+
 #### Dockerized installation
 
 For running backend, frontend and database in Docker
